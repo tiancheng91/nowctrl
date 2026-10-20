@@ -1,0 +1,29 @@
+[package]
+name = "nowctrl"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[features]
+default = ["controller"]
+controller = []
+node = []
+
+[dependencies]
+embassy-executor = "0.10.0"
+embassy-sync = "0.8"
+embassy-time = "0.5.0"
+static_cell = "2.1.0"
+esp-alloc = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3"] }
+esp-backtrace = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "panic-handler", "println"] }
+esp-bootloader-esp-idf = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3"] }
+esp-hal = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "log-04", "unstable"] }
+esp-println = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "log-04"] }
+esp-rtos = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "esp-radio", "embassy", "log-04"] }
+esp-radio = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "esp-now", "log-04", "unstable", "wifi"] }
+
+[profile.release]
+debug = true
+lto = "fat"
+codegen-units = 1
