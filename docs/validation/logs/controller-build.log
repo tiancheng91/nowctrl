@@ -1,0 +1,8 @@
+BUILD cargo build --locked --release
+   Compiling nowctrl v0.1.0 (/Users/tian/workspace/github.com/tiancheng91/nowctrl)
+    Finished `release` profile [optimized + debuginfo] target(s) in 1.86s
+Chip type:         esp32c3
+Merge:             true
+Skip padding:      false
+App/part. size:    451,232/4,128,768 bytes, 10.93%
+IMAGE verified bootloader=0x0 partitions=0x8000 app=0x10000 bytes=4194304

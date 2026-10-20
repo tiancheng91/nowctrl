@@ -1,0 +1,7 @@
+(lldb) target create target/p0/controller/firmware.elf
+Current executable set to '/Users/tian/workspace/github.com/tiancheng91/nowctrl/target/p0/controller/firmware.elf' (riscv32).
+(lldb) image lookup -a 0x403815bc
+      Address: firmware.elf[0x403815bc] (firmware.elf.PT_LOAD[0]..rwtext + 3604)
+      Summary: firmware.elf`<esp_hal::interrupt::software::SoftwareInterrupt<0>>::raise + 22 [inlined] <esp_hal::interrupt::software::SoftwareInterrupt<0>>::raise::{closure#0} + 12 at software.rs:114:28
+               firmware.elf`<esp_hal::interrupt::software::SoftwareInterrupt<0>>::raise + 10 [inlined] esp_hal::interrupt::arch::free::<<esp_hal::interrupt::software::SoftwareInterrupt<0>>::raise::{closure#0}, ()> + 8 at riscv.rs:30:13
+               firmware.elf`<esp_hal::interrupt::software::SoftwareInterrupt<0>>::raise + 2 at software.rs:111:17

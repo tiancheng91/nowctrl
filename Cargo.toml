@@ -9,21 +9,48 @@ publish = false
 default = ["controller"]
 controller = []
 node = []
+device-examples = []
+host-examples = []
 
-[dependencies]
+[target.'cfg(target_os = "none")'.dependencies]
 embassy-executor = "0.10.0"
 embassy-sync = "0.8"
 embassy-time = "0.5.0"
 static_cell = "2.1.0"
-esp-alloc = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3"] }
-esp-backtrace = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "panic-handler", "println"] }
-esp-bootloader-esp-idf = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3"] }
-esp-hal = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "log-04", "unstable"] }
-esp-println = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "log-04"] }
-esp-rtos = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "esp-radio", "embassy", "log-04"] }
-esp-radio = { git = "https://github.com/esp-rs/esp-hal", features = ["esp32c3", "esp-now", "log-04", "unstable", "wifi"] }
+esp-alloc = { git = "https://github.com/esp-rs/esp-hal", rev = "c21d5741a8fdecb9e01b196e55b7c7859360bf1b", features = ["esp32c3"] }
+esp-backtrace = { git = "https://github.com/esp-rs/esp-hal", rev = "c21d5741a8fdecb9e01b196e55b7c7859360bf1b", features = ["esp32c3", "panic-handler", "println"] }
+esp-bootloader-esp-idf = { git = "https://github.com/esp-rs/esp-hal", rev = "c21d5741a8fdecb9e01b196e55b7c7859360bf1b", features = ["esp32c3"] }
+esp-hal = { git = "https://github.com/esp-rs/esp-hal", rev = "c21d5741a8fdecb9e01b196e55b7c7859360bf1b", features = ["esp32c3", "log-04", "unstable"] }
+esp-println = { git = "https://github.com/esp-rs/esp-hal", rev = "c21d5741a8fdecb9e01b196e55b7c7859360bf1b", features = ["esp32c3", "log-04"] }
+esp-rtos = { git = "https://github.com/esp-rs/esp-hal", rev = "c21d5741a8fdecb9e01b196e55b7c7859360bf1b", features = ["esp32c3", "esp-radio", "embassy", "log-04"] }
+esp-radio = { git = "https://github.com/esp-rs/esp-hal", rev = "c21d5741a8fdecb9e01b196e55b7c7859360bf1b", features = ["esp32c3", "esp-now", "log-04", "unstable", "wifi"] }
 
 [profile.release]
 debug = true
 lto = "fat"
 codegen-units = 1
+
+[[example]]
+name = "switch_client"
+path = "examples/switch/client.rs"
+required-features = ["device-examples"]
+
+[[example]]
+name = "switch_server"
+path = "examples/switch/server.rs"
+required-features = ["device-examples"]
+
+[[example]]
+name = "rc_client"
+path = "examples/rc/client.rs"
+required-features = ["device-examples"]
+
+[[example]]
+name = "rc_server"
+path = "examples/rc/server.rs"
+required-features = ["device-examples"]
+
+[[example]]
+name = "host_loopback"
+path = "examples/host/loopback.rs"
+required-features = ["host-examples"]

@@ -1,0 +1,216 @@
+   Compiling nowctrl v0.1.0 (/Users/tian/workspace/github.com/tiancheng91/nowctrl)
+error[E0433]: cannot find module or crate `embassy_sync` in this scope
+  --> src/main.rs:12:5
+   |
+12 | use embassy_sync::{blocking_mutex::raw::NoopRawMutex, mutex::Mutex};
+   |     ^^^^^^^^^^^^ use of unresolved module or unlinked crate `embassy_sync`
+   |
+   = help: if you wanted to use a crate named `embassy_sync`, use `cargo add embassy_sync` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `embassy_executor`
+  --> src/main.rs:11:5
+   |
+11 | use embassy_executor::Spawner;
+   |     ^^^^^^^^^^^^^^^^ use of unresolved module or unlinked crate `embassy_executor`
+   |
+   = help: if you wanted to use a crate named `embassy_executor`, use `cargo add embassy_executor` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `embassy_time`
+  --> src/main.rs:13:5
+   |
+13 | use embassy_time::{Duration, Ticker};
+   |     ^^^^^^^^^^^^ use of unresolved module or unlinked crate `embassy_time`
+   |
+   = help: if you wanted to use a crate named `embassy_time`, use `cargo add embassy_time` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `esp_alloc`
+  --> src/main.rs:14:5
+   |
+14 | use esp_alloc as _;
+   |     ---------^^^^^
+   |     |
+   |     no external crate `esp_alloc`
+
+error[E0433]: cannot find module or crate `esp_hal` in this scope
+  --> src/main.rs:16:5
+   |
+16 | use esp_hal::{clock::CpuClock, ram, timer::timg::TimerGroup};
+   |     ^^^^^^^ use of unresolved module or unlinked crate `esp_hal`
+   |
+   = help: if you wanted to use a crate named `esp_hal`, use `cargo add esp_hal` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `esp_backtrace`
+  --> src/main.rs:15:5
+   |
+15 | use esp_backtrace as _;
+   |     -------------^^^^^
+   |     |
+   |     no external crate `esp_backtrace`
+
+error[E0432]: unresolved import `esp_hal`
+  --> src/main.rs:16:5
+   |
+16 | use esp_hal::{clock::CpuClock, ram, timer::timg::TimerGroup};
+   |     ^^^^^^^ use of unresolved module or unlinked crate `esp_hal`
+   |
+   = help: if you wanted to use a crate named `esp_hal`, use `cargo add esp_hal` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `esp_radio` in this scope
+  --> src/main.rs:18:5
+   |
+18 | use esp_radio::esp_now::{BROADCAST_ADDRESS, EspNowReceiver, EspNowSender};
+   |     ^^^^^^^^^ use of unresolved module or unlinked crate `esp_radio`
+   |
+   = help: if you wanted to use a crate named `esp_radio`, use `cargo add esp_radio` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `esp_println`
+  --> src/main.rs:17:5
+   |
+17 | use esp_println::println;
+   |     ^^^^^^^^^^^ use of unresolved module or unlinked crate `esp_println`
+   |
+   = help: if you wanted to use a crate named `esp_println`, use `cargo add esp_println` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `embassy_executor` in this scope
+   --> src/main.rs:103:3
+    |
+103 | #[embassy_executor::task]
+    |   ^^^^^^^^^^^^^^^^ use of unresolved module or unlinked crate `embassy_executor`
+
+error[E0433]: cannot find module or crate `embassy_executor` in this scope
+  --> src/main.rs:95:3
+   |
+95 | #[embassy_executor::task]
+   |   ^^^^^^^^^^^^^^^^ use of unresolved module or unlinked crate `embassy_executor`
+
+error[E0433]: cannot find module or crate `embassy_executor` in this scope
+  --> src/main.rs:79:3
+   |
+79 | #[embassy_executor::task]
+   |   ^^^^^^^^^^^^^^^^ use of unresolved module or unlinked crate `embassy_executor`
+
+error[E0433]: cannot find module or crate `esp_hal` in this scope
+  --> src/main.rs:32:3
+   |
+32 | #[esp_hal::main]
+   |   ^^^^^^^ use of unresolved module or unlinked crate `esp_hal`
+
+error[E0433]: cannot find module or crate `esp_alloc` in this scope
+  --> src/main.rs:43:5
+   |
+43 |     esp_alloc::heap_allocator!(#[ram(reclaimed)] size: 64 * 1024);
+   |     ^^^^^^^^^ use of unresolved module or unlinked crate `esp_alloc`
+
+error[E0433]: cannot find module or crate `esp_alloc` in this scope
+  --> src/main.rs:44:5
+   |
+44 |     esp_alloc::heap_allocator!(size: 36 * 1024);
+   |     ^^^^^^^^^ use of unresolved module or unlinked crate `esp_alloc`
+
+error[E0433]: cannot find module or crate `esp_bootloader_esp_idf` in this scope
+  --> src/main.rs:20:1
+   |
+20 | esp_bootloader_esp_idf::esp_app_desc!();
+   | ^^^^^^^^^^^^^^^^^^^^^^ use of unresolved module or unlinked crate `esp_bootloader_esp_idf`
+
+error[E0433]: cannot find module or crate `esp_println` in this scope
+  --> src/main.rs:34:5
+   |
+34 |     esp_println::logger::init_logger_from_env();
+   |     ^^^^^^^^^^^ use of unresolved module or unlinked crate `esp_println`
+   |
+   = help: if you wanted to use a crate named `esp_println`, use `cargo add esp_println` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `esp_hal` in this scope
+  --> src/main.rs:36:18
+   |
+36 |     let config = esp_hal::Config::default().with_cpu_clock(CpuClock::max());
+   |                  ^^^^^^^ use of unresolved module or unlinked crate `esp_hal`
+   |
+   = help: if you wanted to use a crate named `esp_hal`, use `cargo add esp_hal` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `embassy_time` in this scope
+  --> src/main.rs:53:5
+   |
+53 |     embassy_time::Timer::after_secs(3).await;
+   |     ^^^^^^^^^^^^ use of unresolved module or unlinked crate `embassy_time`
+   |
+   = help: if you wanted to use a crate named `embassy_time`, use `cargo add embassy_time` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `esp_radio` in this scope
+  --> src/main.rs:55:22
+   |
+55 |     let controller = esp_radio::wifi::WifiController::new(peripherals.WIFI, Default::default())
+   |                      ^^^^^^^^^ use of unresolved module or unlinked crate `esp_radio`
+   |
+   = help: if you wanted to use a crate named `esp_radio`, use `cargo add esp_radio` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `static_cell` in this scope
+  --> src/main.rs:69:9
+   |
+69 |         static_cell::StaticCell::new();
+   |         ^^^^^^^^^^^ use of unresolved module or unlinked crate `static_cell`
+   |
+   = help: if you wanted to use a crate named `static_cell`, use `cargo add static_cell` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `embassy_time` in this scope
+  --> src/main.rs:75:9
+   |
+75 |         embassy_time::Timer::after_secs(60).await;
+   |         ^^^^^^^^^^^^ use of unresolved module or unlinked crate `embassy_time`
+   |
+   = help: if you wanted to use a crate named `embassy_time`, use `cargo add embassy_time` to add it to your `Cargo.toml`
+
+error: `#[panic_handler]` function required, but not found
+
+error: unwinding panics are not supported without std
+  |
+  = help: using nightly cargo, use -Zbuild-std with panic="abort" to avoid unwinding
+  = note: since the core library is usually precompiled with panic="unwind", rebuilding your crate with panic="abort" may not be enough to fix the problem
+
+error[E0433]: cannot find module or crate `esp_hal` in this scope
+  --> src/main.rs:37:23
+   |
+37 |     let peripherals = esp_hal::init(config);
+   |                       ^^^^^^^ use of unresolved module or unlinked crate `esp_hal`
+   |
+   = help: if you wanted to use a crate named `esp_hal`, use `cargo add esp_hal` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `esp_rtos` in this scope
+  --> src/main.rs:48:5
+   |
+48 |     esp_rtos::start(timg0.timer0);
+   |     ^^^^^^^^ use of unresolved module or unlinked crate `esp_rtos`
+   |
+   = help: if you wanted to use a crate named `esp_rtos`, use `cargo add esp_rtos` to add it to your `Cargo.toml`
+
+error[E0599]: no method named `unwrap` found for opaque type `impl Future<Output = ()>` in the current scope
+  --> src/main.rs:51:31
+   |
+51 |     spawner.spawn(tick_task().unwrap());
+   |                               ^^^^^^ method not found in `impl Future<Output = ()>`
+
+error[E0599]: no method named `unwrap` found for opaque type `impl Future<Output = ()>` in the current scope
+  --> src/main.rs:71:37
+   |
+71 |     spawner.spawn(rx_task(receiver).unwrap());
+   |                                     ^^^^^^ method not found in `impl Future<Output = ()>`
+
+error[E0599]: no method named `unwrap` found for opaque type `impl Future<Output = ()>` in the current scope
+  --> src/main.rs:72:35
+   |
+72 |     spawner.spawn(tx_task(sender).unwrap());
+   |                                   ^^^^^^ method not found in `impl Future<Output = ()>`
+
+error[E0433]: cannot find module or crate `static_cell` in this scope
+  --> src/main.rs:68:16
+   |
+68 |     static TX: static_cell::StaticCell<Mutex<NoopRawMutex, EspNowSender>> =
+   |                ^^^^^^^^^^^ use of unresolved module or unlinked crate `static_cell`
+   |
+   = help: if you wanted to use a crate named `static_cell`, use `cargo add static_cell` to add it to your `Cargo.toml`
+
+Some errors have detailed explanations: E0432, E0433, E0599.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `nowctrl` (bin "nowctrl") due to 30 previous errors
+warning: build failed, waiting for other jobs to finish...

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>NowCtrl · 控制工作台</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="NowCtrl 首页"><span class="brand-mark">N<span>↗</span></span>NOWCTRL<span class="brand-sub">LOCAL CONTROL SYSTEM</span></a><div class="top-status"><span class="dot amber"></span> 软件模拟 <span class="divider">/</span> <span class="mono">P1 DEV</span></div></header>
+<div class="simulation-banner"><span class="mono">SIMULATION MODE</span><span>当前为本机虚拟环境。操作不会发送无线指令，也不会驱动真实设备。</span></div>
+<main>
+<section class="page-heading"><div><p class="eyebrow">CONTROLLER / WORKSPACE</p><h1>控制工作台<span class="heading-line"></span></h1><p class="subtitle">让每个节点，各就其位。</p></div><div class="heading-actions"><span id="connection" role="status">正在连接模拟服务…</span><button id="refresh" class="button">刷新状态 <span aria-hidden="true">↻</span></button></div></section>
+<section class="metrics" aria-label="系统概要"><div><span class="label">节点容量</span><strong id="node-count">— <small>/ 08</small></strong><span class="metric-note">固定身份 · 可重排通道</span></div><div><span class="label">模拟在线</span><strong id="online-count">—</strong><span class="metric-note">启用的虚拟节点</span></div><div><span class="label">无线配置</span><strong>CH <span class="cyan">06</span></strong><span class="metric-note">RF 通道 · 未进行射频验证</span></div><div><span class="label">传输环境</span><strong class="small-value">LOCAL <span class="cyan">/ SIM</span></strong><span class="metric-note">ESP-NOW 尚未连接</span></div></section>
+<div class="workbench">
+<section class="panel node-panel"><div class="panel-heading"><h2><span class="section-no">01</span> 节点目录</h2><span class="mono muted">NODE REGISTRY</span></div><div class="panel-toolbar"><span class="muted">选择节点，管理逻辑通道</span><button id="pair" class="button primary">＋ 模拟配对</button></div><div id="pairing" class="pairing" hidden><div><span class="dot cyan-dot"></span><strong>模拟配对窗口</strong><span id="pair-time" class="mono"></span></div><p>此处添加本地虚拟节点，无需按设备按钮。</p><form id="add-form"><input id="add-name" aria-label="新模拟节点名称" maxlength="32" placeholder="新节点名称" required><select id="add-type" aria-label="模拟设备类型"><option value="unknown">未定义 / GPIO 只读</option><option value="switch">开关预设</option><option value="rc_basic">模玩基础预设</option></select><button class="button primary" type="submit">添加</button></form></div><div id="nodes" class="node-list" aria-label="节点列表"><p class="empty">正在读取节点…</p></div><div class="panel-foot"><span class="cyan mono">ID ≠ CH</span> 排序只改变逻辑通道，节点身份保持不变。</div></section>
+<div class="control-column"><section class="panel control-panel"><div class="panel-heading"><h2><span class="section-no">02</span> 虚拟控制</h2><span id="device-mode" class="mono cyan">DEVICE PRESET</span></div><div id="control-empty" class="empty" hidden>选择或添加节点后即可预览虚拟控制。</div><div id="control-body"><div class="target-heading"><div><span id="target-channel" class="channel-tag">CH —</span><h3 id="target-name">—</h3><span id="target-id" class="mono muted">NODE —</span></div><span id="target-online" class="status-chip">—</span></div><div id="switch-controls"><div class="output-display"><span class="label">VIRTUAL OUTPUT</span><div class="output-row"><span id="output-light" class="output-light"></span><strong id="output-value">OFF</strong><span class="mono muted">仅虚拟状态<br>NO GPIO ATTACHED</span></div><div class="signal-track"><span id="signal-fill"></span></div></div><div class="control-actions"><button class="button" data-action="OFF">关闭 <span class="mono">OFF</span></button><button class="button" data-action="ON">开启 <span class="mono">ON</span></button><button class="button primary" data-action="TOGGLE">切换状态 <span class="mono">TOGGLE</span></button></div><form id="pulse-form" class="pulse-form"><label for="pulse-duration">脉冲时长 <span class="mono muted">ms</span></label><input id="pulse-duration" type="number" min="1" max="60000" value="500" required><button class="button" type="submit">执行脉冲</button></form><p class="control-note">操作结果来自软件模拟器，不能代表真实设备 ACK。</p></div><div id="rc-controls" class="preset-body" hidden>
+<div class="preset-heading"><span class="label">RC BASIC / 模玩基础预设</span><strong id="rc-action">停止</strong></div>
+<div class="axis-values"><div><span>油门</span><strong id="rc-throttle">0%</strong></div><div><span>转向</span><strong id="rc-steering">0%</strong></div></div>
+<div class="rc-pad" aria-label="模玩基础动作">
+<button class="button boost" data-rc="BOOST_FORWARD">加速前进<span>65%</span></button>
+<button class="button forward" data-rc="FORWARD">前进<span>35%</span></button>
+<button class="button left" data-rc="LEFT">左<span>仅转向</span></button>
+<button id="rc-stop" class="button primary stop">停止<span>STOP</span></button>
+<button class="button right" data-rc="RIGHT">右<span>仅转向</span></button>
+<button class="button reverse" data-rc="REVERSE">后退<span>30%</span></button>
+</div>
+<p class="control-note">按住动作键持续更新，松开停止。切换节点、离开页面或超过 300ms 未收到更新时归零。数值为软件预设，不是校准后的电机输出。</p>
+</div>
+<div id="gpio-controls" class="preset-body" hidden>
+<div class="preset-heading"><span class="label">GPIO MONITOR</span><strong class="readonly-chip">只读</strong></div>
+<p class="gpio-explanation">设备类型未定义，仅展示设备上报的 GPIO 电平；不提供网页写入或电平切换。</p>
+<div id="gpio-values" class="gpio-values" aria-label="只读 GPIO 电平"></div>
+<p class="control-note">此处为模拟 GPIO 数据，编号不代表已确认的开发板引脚。未上报的电平显示未知，不视为 LOW。</p>
+</div>
+</div></section>
+<section class="panel settings-panel"><div class="panel-heading"><h2><span class="section-no">03</span> 节点设置</h2><span class="mono muted">CONFIGURATION</span></div><form id="settings-form"><label for="node-name">显示名称</label><input id="node-name" maxlength="32" placeholder="节点名称" required><label class="checkbox-label"><input id="node-enabled" type="checkbox">启用节点 <span class="muted">停用后虚拟输出关闭</span></label><div class="settings-actions"><button id="delete" type="button" class="button danger">移除节点</button><button class="button" type="submit">保存设置</button></div></form></section></div>
+<section class="panel event-panel"><div class="panel-heading"><h2><span class="section-no">04</span> 事件记录</h2><span class="mono"><span class="dot cyan-dot"></span> LOCAL</span></div><div class="terminal-top"><span class="mono">nowctrl / virtual-controller</span><span class="mono muted">LAST 100</span></div><div id="events" class="terminal" role="log" aria-live="polite" aria-label="模拟事件记录"></div><div class="event-summary"><span class="label">运行信息</span><dl><div><dt>模拟器版本</dt><dd class="mono">0.1.0-dev</dd></div><div><dt>模拟运行时间</dt><dd id="uptime" class="mono">00:00:00</dd></div><div><dt>配置存储</dt><dd>本机文件</dd></div><div><dt>真实无线链路</dt><dd class="muted">未连接</dd></div><div><dt>执行器</dt><dd class="muted">未接入</dd></div></dl><p class="hardware-note"><span class="dot amber"></span> 硬件验证待设备就绪后进行</p></div></section>
+</div>
+<footer><span><span class="dot amber"></span> NOWCTRL <span class="muted">/ 自主、本地、可控</span></span><span class="mono muted">RUST · EMBASSY · ESP32-C3</span></footer>
+</main>
+<div id="notice" class="notice" role="status" hidden></div>
+<dialog id="delete-dialog"><form method="dialog"><p class="eyebrow">REMOVE SIMULATED NODE</p><h2>移除这个模拟节点？</h2><p id="delete-description"></p><p class="muted">本机保存的名称与顺序将被删除。不会操作任何真实设备。</p><div class="dialog-actions"><button class="button" value="cancel">取消</button><button class="button danger" value="confirm">确认移除</button></div></form></dialog>
+</body></html>

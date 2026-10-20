@@ -1,0 +1,52 @@
+name: Rust checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Native protocol tests
+        run: cargo test --locked --lib --target x86_64-unknown-linux-gnu
+      - name: Client/server host loopback
+        run: cargo run --locked --example host_loopback --features host-examples --target x86_64-unknown-linux-gnu
+      - name: Native lint and formatting
+        run: |
+          cargo clippy --locked --lib --target x86_64-unknown-linux-gnu -- -D warnings
+          cargo fmt --check
+      - name: Emulator evidence checker tests
+        run: |
+          python3 -m unittest discover -s sim/esp-emu -p 'test_*.py'
+          python3 -m unittest discover -s tools -p 'test_*.py'
+  firmware:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        role: [controller, node]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link firmware
+        run: cargo build --locked --release --no-default-features --features ${{ matrix.role }}
+      - name: Link device client/server examples
+        if: matrix.role == 'controller'
+        run: |
+          cargo build --locked --release --features device-examples --example switch_client --example switch_server --example rc_client --example rc_server
+          cargo clippy --locked --release --features device-examples --example switch_client --example switch_server --example rc_client --example rc_server -- -D warnings
+      - name: Reject invalid role combinations
+        run: |
+          if cargo build --locked --release --features controller,node > both.log 2>&1; then
+            cat both.log
+            exit 1
+          fi
+          grep -F "Select exactly one of 'controller' and 'node'" both.log
+          if cargo build --locked --release --no-default-features > neither.log 2>&1; then
+            cat neither.log
+            exit 1
+          fi
+          grep -F "Select one of 'controller' or 'node'" neither.log

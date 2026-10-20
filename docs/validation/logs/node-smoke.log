@@ -1,0 +1,12 @@
+
+    ╻ ╻ ╻ ╻
+   ┏┻━┻━┻━┻┓    ┏━╸┏━┓┏━┓   ┏━╸┏┳┓╻ ╻
+  ━┫       ┣━   ┣╸ ┗━┓┣━┛╺━╸┣╸ ┃┃┃┃ ┃
+  ━┫ ESP32 ┣━   ┗━╸┗━┛╹     ┗━╸╹ ╹┗━┛
+  ━┫       ┣━
+   ┗┳━┳━┳━┳┛    ESP32 series emulator · v0.49.0
+    ╹ ╹ ╹ ╹     https://github.com/espressif/esp-emulator
+
+IMAGE verified bootloader=0x0 partitions=0x8000 app=0x10000 bytes=4194304
+ERROR: Three consecutive timer ticks missing: []
+Emulator exit=0; log=/Users/tian/workspace/github.com/tiancheng91/nowctrl/target/p0/node/emulator.log

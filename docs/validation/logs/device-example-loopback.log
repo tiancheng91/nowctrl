@@ -1,0 +1,9 @@
+   Compiling nowctrl v0.1.0 (/Users/tian/workspace/github.com/tiancheng91/nowctrl)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.34s
+     Running `target/aarch64-apple-darwin/debug/examples/host_loopback`
+switch server: output=true request=1 retry=false
+switch server: output=true request=1 retry=true
+switch client: application ACK accepted; duplicate toggle did not reexecute
+RC server: Axes { throttle: 35, steering: 0 }
+RC server: stopped at 300ms without a fresh update
+PASS: host loopback only; no radio, GPIO or device authentication was tested

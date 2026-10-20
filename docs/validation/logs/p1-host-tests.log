@@ -1,0 +1,19 @@
+   Compiling nowctrl v0.1.0 (/Users/tian/workspace/github.com/tiancheng91/nowctrl)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.41s
+     Running unittests src/lib.rs (target/aarch64-apple-darwin/debug/deps/nowctrl-07c2c03eb19026be)
+
+running 11 tests
+test protocol::tests::acknowledgments_reject_unknown_results_and_extra_bytes ... ok
+test protocol::tests::all_assigned_message_types_round_trip ... ok
+test protocol::tests::control_and_ack_require_nonzero_destination_and_request ... ok
+test protocol::tests::encode_errors_do_not_partially_write_output ... ok
+test protocol::tests::golden_wire_format_is_little_endian ... ok
+test protocol::tests::frame_boundary_and_output_capacity_are_checked ... ok
+test protocol::tests::invalid_payloads_and_zero_duration_are_rejected ... ok
+test protocol::tests::rejects_every_truncated_prefix_and_trailing_bytes ... ok
+test protocol::tests::switch_actions_round_trip_with_exact_payload_lengths ... ok
+test protocol::tests::rejects_unknown_version_type_and_reserved_flags ... ok
+test protocol::tests::arbitrary_bounded_bytes_never_panic_and_accepted_frames_reencode ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

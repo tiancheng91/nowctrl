@@ -1,0 +1,10 @@
+COMMAND cargo build --locked --release --no-default-features
+   Compiling nowctrl v0.1.0 (/Users/tian/workspace/github.com/tiancheng91/nowctrl)
+error: Select one of 'controller' or 'node'
+ --> src/main.rs:9:1
+  |
+9 | compile_error!("Select one of 'controller' or 'node'");
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not compile `nowctrl` (bin "nowctrl") due to 1 previous error
+EXIT 101
