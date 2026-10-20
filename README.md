@@ -47,6 +47,10 @@ exchange, phone HTTP or AP coexistence has been verified.
 
 ## Management software preview
 
+![NowCtrl management workbench — software simulation](docs/validation/screenshots/management-desktop.png)
+
+*管理页预览：软件模拟环境，图中的节点状态与控制反馈不代表真实设备。*
+
 ```sh
 python3 tools/dev_server.py --port 8080
 ```
